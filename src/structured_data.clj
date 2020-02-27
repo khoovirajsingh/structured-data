@@ -75,8 +75,9 @@
   (let [new-authors (conj (:authors book) new-author)]
     (assoc book :authors new-authors)))
 
-(defn alive? [author]
-  :-)
+(defn alive? 
+  [author]
+  (not (contains? author :death-year)))
 
 (defn element-lengths [collection]
   :-)
