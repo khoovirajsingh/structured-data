@@ -58,14 +58,17 @@
          (contains-point? outer p2))))
 
 
-(defn title-length [book]
-  :-)
+(defn title-length 
+  [book]
+  (count (:title book)))
 
-(defn author-count [book]
-  :-)
+(defn author-count 
+  [book]
+  (count (:author book)))
 
-(defn multiple-authors? [book]
-  :-)
+(defn multiple-authors? 
+  [book]
+  (> 1 (author-count book)))
 
 (defn add-author [book new-author]
   :-)
