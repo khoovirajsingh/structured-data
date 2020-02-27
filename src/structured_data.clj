@@ -5,8 +5,11 @@
   (let [sum (+ x x)]
     (Math/pow sum sum)))
 
-(defn spiff [v]
-  :-)
+(defn spiff 
+  [v]
+  (let [first-element (get v 0)
+        third-element (get v 2)]
+    (+ first-element third-element)))
 
 (defn cutify [v]
   :-)
