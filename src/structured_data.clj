@@ -11,8 +11,9 @@
         third-element (get v 2)]
     (+ first-element third-element)))
 
-(defn cutify [v]
-  :-)
+(defn cutify 
+  [v]
+  (conj v "<3"))
 
 (defn spiff-destructuring [v]
   :-)
