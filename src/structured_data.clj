@@ -96,8 +96,10 @@
 (defn monotonic? [a-seq]
   :-)
 
-(defn stars [n]
-  :-)
+(defn stars 
+  [n]
+  (apply str (repeat n "*")))
+
 
 (defn toggle [a-set elem]
   :-)
