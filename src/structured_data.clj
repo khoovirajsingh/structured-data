@@ -1,5 +1,20 @@
 (ns structured-data)
 
+(def china {:name "China Miéville", :birth-year 1972})
+(def octavia {:name "Octavia E. Butler"
+              :birth-year 1947
+              :death-year 2006})
+(def friedman {:name "Daniel Friedman" :birth-year 1944})
+(def felleisen {:name "Matthias Felleisen"})
+
+(def cities {:title "The City and the City" :authors #{china}})
+(def wild-seed {:title "Wild Seed", :authors #{octavia}})
+(def embassytown {:title "Embassytown", :authors #{china}})
+(def little-schemer {:title "The Little Schemer"
+                     :authors #{friedman, felleisen}})
+
+(def books [cities, wild-seed, embassytown, little-schemer])
+
 (defn do-a-thing 
   [x]
   (let [sum (+ x x)]
@@ -135,11 +150,14 @@
   [author]
   (let [name (:name author)
         birth-year (when (:birth-year author)
-                     (str " (" (:birth-year author) "- (" (:death-year author) ")"))]
+                     (str " (" (:birth-year author) " - " (:death-year author) ")"))]
     (str name birth-year)))
 
-(defn authors->string [authors]
-  :-)
+
+(defn authors->string 
+  [authors]
+  (apply str (interpose " ," (map author->string authors))))
+
 
 (defn book->string [book]
   :-)
