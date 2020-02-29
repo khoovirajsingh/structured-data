@@ -122,8 +122,10 @@
   (contains? (:authors book) author))
 
 
-(defn authors [books]
-  :-)
+(defn authors 
+  [books]
+  (let [authors (map :authors books)]
+       (apply clojure.set/union authors)))  
 
 (defn all-author-names [books]
   :-)
