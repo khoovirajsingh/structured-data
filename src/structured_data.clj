@@ -88,8 +88,10 @@
   (let [get-second-element (fn [x] (get x 1))]
     (map get-second-element collection)))
 
-(defn titles [books]
-  :-)
+(defn titles 
+  [books]
+  (map :title books))
+
 
 (defn monotonic? [a-seq]
   :-)
