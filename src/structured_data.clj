@@ -57,7 +57,6 @@
     (and (contains-point? outer p1)
          (contains-point? outer p2))))
 
-
 (defn title-length 
   [book]
   (count (:title book)))
@@ -149,22 +148,35 @@
   (str (:title book) " written by " (authors->string (:authors book))))
 
 
-(defn books->string [books]
-  :-)
+(defn books->string 
+  [books]
+  (cond    
+    (== (count books) 0) "No books."    
+    (== (count books) 1) (str "1 book. " (book->string (first books)) ".")    
+    :else (let [num_books (str (count books) " books. ")               
+                books_str (apply str (interpose ". " (map book->string books)))]            
+            (str num_books books_str "."))))
 
-(defn books-by-author [author books]
-  :-)
 
-(defn author-by-name [name authors]
-  :-)
+(defn books-by-author 
+  [author books]
+  (filter (fn [x] (has-author? x author) (authors books))))
 
-(defn living-authors [authors]
-  :-)
+(defn author-by-name 
+  [name authors]
+  (first (filter (fn [x] (== (:name x) name) authors))))
 
-(defn has-a-living-author? [book]
-  :-)
+(defn living-authors 
+  [authors]
+  (filter (fn [x] (not (contains? x :death-year))) authors))
 
-(defn books-by-living-authors [books]
-  :-)
+(defn has-a-living-author? 
+  [book]
+  (not (empty? (living-authors (:authors book)))))
+
+(defn books-by-living-authors 
+  [books]
+  (filter has-a-living-author? books))
+
 
 ; %________%
