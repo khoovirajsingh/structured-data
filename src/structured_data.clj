@@ -108,8 +108,10 @@
     (disj a-set elem)
     (conj a-set elem)))
 
-(defn contains-duplicates? [a-seq]
-  :-)
+(defn contains-duplicates? 
+  [a-seq]
+  (let [a-set (set a-seq)]
+    (< (count a-set) (count a-seq))))
 
 (defn old-book->new-book [book]
   :-)
