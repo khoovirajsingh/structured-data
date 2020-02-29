@@ -127,11 +127,16 @@
   (let [authors (map :authors books)]
        (apply clojure.set/union authors)))  
 
-(defn all-author-names [books]
-  :-)
+(defn all-author-names 
+  [books]
+  (set (:name (authors books))))
 
-(defn author->string [author]
-  :-)
+(defn author->string 
+  [author]
+  (let [name (:name author)
+        birth-year (when (:birth-year author)
+                     (str " (" (:birth-year author) "- (" (:death-year author) ")"))]
+    (str name birth-year)))
 
 (defn authors->string [authors]
   :-)
