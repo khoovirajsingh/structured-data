@@ -156,11 +156,15 @@
 
 (defn authors->string 
   [authors]
-  (apply str (interpose " ," (map author->string authors))))
+  (apply str (interpose ", " (map author->string authors))))
 
 
-(defn book->string [book]
-  :-)
+(defn book->string 
+  [book]
+  (str (:title book) " written by " (authors->string (:authors book))))
+
+(book->string little-schemer)
+
 
 (defn books->string [books]
   :-)
