@@ -113,11 +113,14 @@
   (let [a-set (set a-seq)]
     (< (count a-set) (count a-seq))))
 
-(defn old-book->new-book [book]
-  :-)
+(defn old-book->new-book 
+  [book]
+  (assoc {} :authors (set :authors book)))
 
-(defn has-author? [book author]
-  :-)
+(defn has-author? 
+  [book author]
+  (contains? (:authors book) author))
+
 
 (defn authors [books]
   :-)
